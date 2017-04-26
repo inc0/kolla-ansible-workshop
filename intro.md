@@ -2,7 +2,7 @@
 
 ## What are we deploying?
 
-This guide will walk you through deployment of multinode HA OpenStack from scrach that will resemble production environment.
+This guide will walk you through deployment of multinode HA Ocata OpenStack from scrach that will resemble production environment.
 We will start from 5 machines with basic Ubuntu 16.04 or Centos 7 and at the end we will (hopefully!) have our OpenStack up and running!
 
 ## Couple words about architecture
