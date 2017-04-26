@@ -19,3 +19,31 @@ Then use pip to install Ansible and Kolla-ansible
 ```
 pip install ansible kolla-ansible
 ```
+
+## Copy configs and prepare inventory file
+
+Example config files:
+
+Ubuntu:
+```
+cp -r /usr/local/share/kolla-ansible/etc_examples/kolla /etc/kolla/
+```
+Centos:
+```
+cp -r /usr/share/kolla-ansible/etc_examples/kolla /etc/kolla/
+```
+
+Inventory files:
+Ubuntu:
+```
+cp /usr/share/kolla-ansible/ansible/inventory/* .
+```
+Centos:
+```
+cp /usr/local/share/kolla-ansible/ansible/inventory/* .
+```
+
+## Inventory files
+
+Next step is to prepare our inventory file. Inventory is ansible file where we specify 
+
