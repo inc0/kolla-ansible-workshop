@@ -97,10 +97,6 @@ control   # when you specify group_name:children, it will use contents of group 
 [monitoring]
 10.0.0.10  # this group is for monitoring node. We will not deploy monitoring today as it's not production ready. We need to fill it nonetheless. Use one controller
 
-# When compute nodes and control nodes use different interfaces,
-# you can specify "api_interface" and other interfaces like below:
-#compute01 neutron_external_interface=eth0 api_interface=em1 storage_interface=em1 tunnel_interface=em1
-
 [storage:children]
 compute
 
@@ -108,3 +104,56 @@ compute
 localhost       ansible_connection=local become=true # use localhost and sudo 
 ```
 
+## Prepare config files
+Kolla-ansible uses 2 main config files: /etc/kolla/globals.yaml and /etc/kolla/passwords.yaml
+
+### Generate randomized passwords
+To quickly create set of randomized passwords for passwords.yaml, run
+
+```
+kolla-genpwd
+```
+
+### Prepare Kolla config
+Now let's prepare actual config. Use your favorite editor to edit /etc/kolla/globals.yaml
+
+#### Select images to deploy
+In Kolla we use image-based deployment. Normally we could build our own images. Since it's time consuming task, for the purpose of training we will use pre-built images from docker registry.
+If you want to learn more about building images, please refer to https://docs.openstack.org/developer/kolla/image-building.html
+
+First we need to pick our favorite linux distributon. Currently Kolla supports Ubuntu, Centos, Oraclelinux, RHEL and Debian.
+Most popular are Ubuntu and Centos. While it's theoretically possible to run mixed distro (Ubuntu host and CentOS container for example), we discourage this as it has proven to be problematic in the past.
+```
+kolla_base_distro: "centos"
+```
+
+After that we need to pick way our OpenStack was installed inside containers. Two options are binary and source. For CentOS both modes are proven reliable, for Ubuntu source mode seems to be more stable.
+```
+kolla_install_type: "source"
+```
+Now let's specify that we want Ocata version of OpenStack. 4.0.2 is latest released version of Kolla in Ocata.
+```
+openstack_release: "4.0.2"
+```
+And finally docker registry with images. Registry is available locally under this address
+```
+docker_registry: "10.0.0.11:4000"
+```
+
+#### Configure networking
+Now we need to specify few details regarding our networking configuration.
+
+First let's specify address which all internal APIs will use. This address will be managed by keepalived and HAProxy will use it for load balancing. Use address specified in handout.
+```
+kolla_internal_vip_address: "10.0.1.2" 
+```
+
+Now interfaces configuration. Kolla requires 2 interfaces minimum. One for control plane and another for flat network for Neutron. You can specify more interfaces for various roles, you can find more details about that here: https://docs.openstack.org/developer/kolla-ansible/production-architecture-guide.html#network-configuration
+For now use networks specified in handout.
+```
+network_interface: "eth0"  # this is control plane, vxlan tunnels, storage and such
+neutron_external_interface: "eth1"  # this is interface Neutron will use for flat external networking
+```
+
+
+And that's it! We are ready to kick off deployment!
