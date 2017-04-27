@@ -6,7 +6,7 @@ Let start by installing few packages that we'll need later (use sudo or root acc
 
 Ubuntu:
 ```
-apt-get install python-dev libffi-dev gcc libssl-dev
+apt-get install python-dev libffi-dev gcc libssl-dev python-pip
 pip install -U pip
 ```
 Centos
