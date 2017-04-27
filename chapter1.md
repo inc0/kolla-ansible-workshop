@@ -141,10 +141,6 @@ After that we need to pick way our OpenStack was installed inside containers. Tw
 ```
 kolla_install_type: "source"
 ```
-Now let's specify that we want Ocata version of OpenStack. 4.0.2 is latest released version of Kolla in Ocata.
-```
-openstack_release: "4.0.2"
-```
 And finally docker registry with images. Registry is available locally under this address
 ```
 docker_registry: "10.0.0.6:5000"
