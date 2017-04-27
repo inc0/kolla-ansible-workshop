@@ -18,7 +18,7 @@ kolla-ansible -i /path/to/our/inventory/file bootstrap-servers
 ## Check if everything is in order
 Let's do some preflight checks
 ```
-kolla-ansible -i /path/to/our/inventory/file precheck
+kolla-ansible -i /path/to/our/inventory/file prechecks
 ```
 
 ## Mark disks for Ceph
