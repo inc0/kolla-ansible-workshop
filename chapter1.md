@@ -147,7 +147,7 @@ openstack_release: "4.0.2"
 ```
 And finally docker registry with images. Registry is available locally under this address
 ```
-docker_registry: "10.0.0.6:4000"
+docker_registry: "10.0.0.6:5000"
 ```
 
 #### Configure networking
