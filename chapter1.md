@@ -118,7 +118,7 @@ localhost       ansible_connection=local become=true # use localhost and sudo
 Kolla-ansible uses 2 main config files: /etc/kolla/globals.yaml and /etc/kolla/passwords.yaml
 
 ### Generate randomized passwords
-To quickly create set of randomized passwords for passwords.yaml, run
+To quickly create set of randomized passwords for passwords.yaml, run (note, takes good few seconds)
 
 ```
 kolla-genpwd
