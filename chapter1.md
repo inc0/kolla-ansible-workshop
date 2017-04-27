@@ -21,6 +21,15 @@ Then use pip to install Ansible and Kolla-ansible
 pip install ansible kolla-ansible
 ```
 
+## Ansible tweaks
+Few options to streamline our Ansible. Copy this to ~/.ansible.cfg
+```
+[defaults]
+host_key_checking=False
+pipelining=True
+forks=100
+```
+
 ## Copy configs and prepare inventory file
 
 Example config files:
