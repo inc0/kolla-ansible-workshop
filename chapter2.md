@@ -28,7 +28,7 @@ parted $DISK -s -- mklabel gpt mkpart KOLLA_CEPH_OSD_BOOTSTRAP 1 -1
 ```
 Or make Ansible do it!
 ```
-ansible -i /path/to/our/inventory/file -m shell -a "parted /dev/sdb -s -- mklabel gpt mkpart KOLLA_CEPH_OSD_BOOTSTRAP 1 -1" storage
+ansible -i /path/to/our/inventory/file -m shell -a "parted /dev/vdb -s -- mklabel gpt mkpart KOLLA_CEPH_OSD_BOOTSTRAP 1 -1" storage
 ```
 
 ## Deploy whole thing
