@@ -49,3 +49,8 @@ Kolla comes with ELK (or rather, EFK:)) stack. That is Elastic search + Fluentd 
 ```
 enable_central_logging: yes
 ```
+Also, if you want to deploy your OpenStack with debug enabled. Careful, if you enable both it will quickly consume a lot of disk space.
+```
+enable_debug_logging: yes
+```
+
