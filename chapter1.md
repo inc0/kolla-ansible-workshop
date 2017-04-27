@@ -36,11 +36,11 @@ cp -r /usr/share/kolla-ansible/etc_examples/kolla /etc/kolla/
 Inventory files:
 Ubuntu:
 ```
-cp /usr/share/kolla-ansible/ansible/inventory/* .
+cp /usr/local//share/kolla-ansible/ansible/inventory/* .
 ```
 Centos:
 ```
-cp /usr/local/share/kolla-ansible/ansible/inventory/* .
+cp /usr/share/kolla-ansible/ansible/inventory/* .
 ```
 
 ## Inventory files
