@@ -152,9 +152,9 @@ docker_registry: "10.0.0.6:5000"
 #### Configure networking
 Now we need to specify few details regarding our networking configuration.
 
-First let's specify address which all internal APIs will use. This address will be managed by keepalived and HAProxy will use it for load balancing. Use address specified in handout.
+First let's specify address which all internal APIs will use. This address will be managed by keepalived and HAProxy will use it for load balancing. Use this address:
 ```
-kolla_internal_vip_address: "10.0.1.2" 
+kolla_internal_vip_address: "10.1.0.250" 
 ```
 
 Now interfaces configuration. Kolla requires 2 interfaces minimum. One for control plane and another for flat network for Neutron. You can specify more interfaces for various roles, you can find more details about that here: https://docs.openstack.org/developer/kolla-ansible/production-architecture-guide.html#network-configuration
