@@ -39,11 +39,11 @@ Example config files:
 
 Ubuntu:
 ```
-cp -r /usr/local/share/kolla-ansible/etc_examples/kolla /etc/kolla/
+cp -r /usr/local/share/kolla-ansible/etc_examples/kolla /etc/
 ```
 Centos:
 ```
-cp -r /usr/share/kolla-ansible/etc_examples/kolla /etc/kolla/
+cp -r /usr/share/kolla-ansible/etc_examples/kolla /etc/
 ```
 
 Inventory files:
