@@ -167,8 +167,8 @@ neutron_external_interface: "eth1"  # this is interface Neutron will use for fla
 #### Specify which services we want to deploy
 Default deployment of Kolla doesn't deploy storage services. To enable them simply add
 ```
-enable_ceph: yes
-enable_cinder: yes
+enable_ceph: "yes"
+enable_cinder: "yes"
 ```
 
 And that's it! We are ready to kick off deployment!
