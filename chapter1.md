@@ -3,6 +3,9 @@
 ## Download few useful packages
 
 Let start by installing few packages that we'll need later (use sudo or root account)
+```
+sudo su
+```
 
 Ubuntu:
 ```
