@@ -1,0 +1,3 @@
+state/*
+accounts.txt
+terraform.tfstate
