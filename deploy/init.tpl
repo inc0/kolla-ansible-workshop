@@ -1,5 +1,14 @@
 #!/bin/bash
-echo "Match User ${user}" >> /etc/ssh/sshd_config
-echo "  PasswordAuthentication yes" >> /etc/ssh/sshd_config
+
+# Allow password auth for user
+cat << EOF >> /etc/ssh/sshd_config
+
+Match User ${user}
+  PasswordAuthentication yes
+EOF
+
+# Change password for user
 echo ${user}:${password} | /usr/sbin/chpasswd
+
+# Reload sshd
 systemctl restart sshd
