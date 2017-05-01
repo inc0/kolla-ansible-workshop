@@ -1,6 +1,6 @@
 # Setup needed variables
 variable "prefix" {
-  default = "ops"
+  default = "student"
 }
 variable "controller-count" {
   default = 3
@@ -10,19 +10,15 @@ variable "node-count" {
 }
 variable "internal-ip-pool" {}
 variable "floating-ip-pool" {}
-variable "image-name" {
-  default = "ubuntu-16.04"
-}
-variable "image-id" {
-  default = "5fa636c0-243b-40fa-bc36-95c675887568"
-}
 variable "image-flavor" {}
 variable "security-groups" {}
 variable "key-pair" {}
 variable "private-key-file" {
   default = "/root/.ssh/id_rsa"
 }
-
+variable "os" {
+  default = "ubuntu"
+}
 variable "user" {
   default = "ubuntu"
 }
@@ -32,6 +28,7 @@ variable "password" {
 variable "volume-size" {
   default = "15"
 }
+
 # Create template for user data
 data "template_file" "user_data" {
   template = "${file("${path.module}/init.tpl")}"
@@ -39,7 +36,23 @@ data "template_file" "user_data" {
     user     = "${var.user}"
     password = "${var.password}"
   }
-  
+}
+
+# Image references
+data "openstack_images_image_v2" "ubuntu" {
+  name = "ubuntu-16.04"
+  most_recent = true
+}
+data "openstack_images_image_v2" "centos" {
+  name = "centos7"
+  most_recent = true
+}
+
+# Hack to use interpolated variables. Doesnt matter here but changing a trigger causes a re-provisioning.
+resource "null_resource" "ref" {
+    triggers = {
+      image-id = "${var.os == "ubuntu" ?  data.openstack_images_image_v2.ubuntu.id : data.openstack_images_image_v2.centos.id}"
+    }
 }
 
 # Create control network
@@ -74,7 +87,7 @@ resource "openstack_networking_subnet_v2" "subnet-data" {
 resource "openstack_compute_instance_v2" "kolla-controller" {
   count = "${var.controller-count}"
   name = "${var.prefix}-kolla-controller-${count.index}"
-  image_name = "${var.image-name}"
+  image_id = "${null_resource.ref.triggers.image-id}"
   flavor_name = "${var.image-flavor}"
   key_pair = "${var.key-pair}"
   security_groups = ["${split(",", var.security-groups)}"]
@@ -107,7 +120,7 @@ resource "openstack_compute_floatingip_associate_v2" "controller-fip" {
 resource "openstack_compute_instance_v2" "kolla-compute" {
   count = "${var.node-count}"
   name = "${var.prefix}-kolla-compute-${count.index}"
-  image_name = "${var.image-name}"
+  image_id = "${null_resource.ref.triggers.image-id}"
   flavor_name = "${var.image-flavor}"
   key_pair = "${var.key-pair}"
   security_groups = ["${split(",", var.security-groups)}"]
@@ -123,7 +136,7 @@ resource "openstack_compute_instance_v2" "kolla-compute" {
   }
   block_device {
     source_type           = "image"
-    uuid                  = "${var.image-id}"
+    uuid                  = "${null_resource.ref.triggers.image-id}"
     destination_type      = "local"
     boot_index            = 0
     delete_on_termination = true
