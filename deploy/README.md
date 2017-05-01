@@ -44,14 +44,14 @@ The optional fourth command is the operating system (ubuntu or centos).
 
 The `student-info` file contains a log of accounts created including Id (e.g. student0), server IP, user and password.
 
-## Trouble-shooting
+## Troubleshooting
 
 Each student environment is maintained in a Terraform state file located in the `state` dir and named `studentN` where N 
 is the index of the student environment. To troubleshoot an individual environment, pass the -state flag to terraform 
 referencing the path to the state file you want to work with (e.g. terraform show -state state/student0).  Be aware that 
 the state files will remain even after you have destroyed the environment (they can be deleted at that time tho).
 
-## Starting over with deploy.sh
+### Starting over with deploy.sh
 
 Unless things have gone terribly wrong, you should be able to delete your entire environment with one command that covers 
 all indexes. For a range of 0 to 20 students, you could execute the following:
