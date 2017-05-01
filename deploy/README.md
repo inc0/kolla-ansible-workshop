@@ -40,6 +40,11 @@ The optional fourth command is the operating system (ubuntu or centos).
 ./deploy.sh destroy 0 9
 ```
 
+#### Create a single centos environment (student0)
+```
+./deploy.sh create 0 0 centos
+```
+
 ## Account info
 
 The `student-info` file contains a log of accounts created including Id (e.g. student0), server IP, user and password.
