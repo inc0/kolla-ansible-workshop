@@ -29,7 +29,9 @@ variable "user" {
 variable "password" {
   default = "kolla"
 }
-
+variable "volume-size" {
+  default = "15"
+}
 # Create template for user data
 data "template_file" "user_data" {
   template = "${file("${path.module}/init.tpl")}"
@@ -86,7 +88,6 @@ resource "openstack_compute_instance_v2" "kolla-controller" {
   network {
      uuid = "${openstack_networking_network_v2.network-data.id}"
   }
-  #user_data = "${file("init.sh")}"
   user_data = "${data.template_file.user_data.rendered}"
 }
 
@@ -131,7 +132,7 @@ resource "openstack_compute_instance_v2" "kolla-compute" {
   block_device {
     source_type           = "blank"
     destination_type      = "volume"
-    volume_size           = 1
+    volume_size           = "${var.volume-size}"
     boot_index            = 1
     delete_on_termination = true
   }
