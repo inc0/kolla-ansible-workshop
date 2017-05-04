@@ -127,7 +127,7 @@ ansible -i multinode -m raw -a "ls" all
 Kolla-ansible uses 2 main config files: /etc/kolla/globals.yaml and /etc/kolla/passwords.yaml
 
 ### Generate randomized passwords
-To quickly create set of randomized passwords for passwords.yaml, run (note, takes good few seconds)
+To quickly create set of randomized passwords for passwords.yaml, run (note, takes some time)
 
 ```
 kolla-genpwd
