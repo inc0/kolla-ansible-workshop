@@ -117,6 +117,12 @@ compute
 localhost       ansible_connection=local become=true # use localhost and sudo 
 ```
 
+## Check if ansible works
+
+```
+ansible -i multinode -m raw -a "ls" all
+```
+
 ## Prepare config files
 Kolla-ansible uses 2 main config files: /etc/kolla/globals.yaml and /etc/kolla/passwords.yaml
 
