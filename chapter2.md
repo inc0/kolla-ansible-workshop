@@ -12,13 +12,13 @@ ansible -i multinode -m shell -a "ifconfig ens5 up && dhclient ens5" all
 Let's start by installation and configuration of Docker, few packages needed by Kolla and preparation of host files.
 To do that simply run
 ```
-kolla-ansible -i /path/to/our/inventory/file bootstrap-servers
+kolla-ansible -i multinode bootstrap-servers
 ```
 
 ## Check if everything is in order
 Let's do some preflight checks
 ```
-kolla-ansible -i /path/to/our/inventory/file prechecks
+kolla-ansible -i multinodefile prechecks
 ```
 
 ## Mark disks for Ceph
@@ -28,10 +28,10 @@ parted $DISK -s -- mklabel gpt mkpart KOLLA_CEPH_OSD_BOOTSTRAP 1 -1
 ```
 Or make Ansible do it!
 ```
-ansible -i /path/to/our/inventory/file -m shell -a "parted /dev/vdb -s -- mklabel gpt mkpart KOLLA_CEPH_OSD_BOOTSTRAP 1 -1" storage
+ansible -i multinode -m shell -a "parted /dev/vdb -s -- mklabel gpt mkpart KOLLA_CEPH_OSD_BOOTSTRAP 1 -1" storage
 ```
 
 ## Deploy whole thing
 ```
-kolla-ansible -i /path/to/our/inventory/file deploy
+kolla-ansible -i multinode deploy
 ```
