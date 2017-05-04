@@ -18,7 +18,7 @@ kolla-ansible -i multinode bootstrap-servers
 ## Check if everything is in order
 Let's do some preflight checks
 ```
-kolla-ansible -i multinodefile prechecks
+kolla-ansible -i multinode prechecks
 ```
 
 ## Mark disks for Ceph
