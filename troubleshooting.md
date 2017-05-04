@@ -54,3 +54,9 @@ Also, if you want to deploy your OpenStack with debug enabled. Careful, if you e
 enable_debug_logging: yes
 ```
 
+### When all hope is lost, destroy and redeploy
+Since Kolla doesn't really touch host that much, it's easy to wipe out your existing env, in fact we have command for that!
+```
+kolla-ansible -i multinode destroy --yes-i-really-really-mean-it
+```
+
