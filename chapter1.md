@@ -10,7 +10,7 @@ sudo su
 Ubuntu:
 ```
 apt-get update
-apt-get install python-dev libffi-dev gcc libssl-dev python-pip
+apt-get install python-dev libffi-dev gcc libssl-dev python-pip sshpass
 pip install -U pip
 ```
 Centos
