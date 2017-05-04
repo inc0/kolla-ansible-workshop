@@ -167,8 +167,8 @@ Now interfaces configuration. Kolla requires 2 interfaces minimum. One for contr
 
 For Ubuntu:
 ```
-network_interface: "ens3"  # this is control plane, vxlan tunnels, storage and such
-neutron_external_interface: "ens4"  # this is interface Neutron will use for flat external networking
+network_interface: "ens4"  # this is control plane, vxlan tunnels, storage and such
+neutron_external_interface: "ens5"  # this is interface Neutron will use for flat external networking
 ```
 
 #### Specify which services we want to deploy
