@@ -7,7 +7,7 @@ To change configuration on running containers, make appropriate changes to eithe
 ```
 kolla-ansible -i ./multinode reconfigure
 ```
-It is also possible to only call only playbook in addition to the base playbooks by using tags.  For instance if you want to just reconfigure the haproxy
+It is also possible to only call only selection of roles instead whole play.  For instance if you want to just reconfigure just the haproxy
 ```
 kolla-ansible -i ./multinode reconfigure --tags haproxy
 ```
