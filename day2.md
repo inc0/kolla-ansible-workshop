@@ -7,6 +7,20 @@ To change configuration on running containers, make appropriate changes to eithe
 ```
 kolla-ansible -i ./multinode reconfigure
 ```
+It is also possible to only call only playbook in addition to the base playbooks by using tags.  For instance if you want to just reconfigure the haproxy
+```
+kolla-ansible -i ./multinode reconfigure --tags haproxy
+```
+
+# Redeploy
+If modifications to the globals.yaml require additional containers to be created run a precheck after the modifications.
+```
+kolla-ansible -i ./multinode precheck
+```
+Followed by a deploy
+```
+kolla-ansible -i ./multinode deploy
+```
 
 # Upgrades
 To perform release upgrade, download new version of Kolla (for example Pike when it's released) and change your globals.yaml and inventory according to change log.
