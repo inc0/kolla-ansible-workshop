@@ -1,11 +1,17 @@
 # Chapter 2 - Deploy me an OpenStack!
 
-## For Ubuntu users
-Since default ubuntu cloud doesn't have python installed (required for ansible to run) and interfaces are down, let's fix it with ansible.
+## Bring up rest of interfaces
+
+For Ubuntu (also install python)
 ```
 ansible -m raw -i multinode  -a "apt-get -y install python" all
 ansible -i multinode -m shell -a "ifconfig ens4 up && dhclient ens4" all
 ansible -i multinode -m shell -a "ifconfig ens5 up && dhclient ens5" all
+```
+For Centos
+```
+ansible -i multinode -m shell -a "ifconfig eth1 up && dhclient eth1" all
+ansible -i multinode -m shell -a "ifconfig eth2 up && dhclient eth2" all
 ```
 
 ## Install docker and other requirements
