@@ -5,7 +5,7 @@ Kolla has some features to help with day 2 operation tasks.
 # Reconfigure
 To change configuration on running containers, make appropriate changes to either globals.yaml or config overrides and run
 ```
-kolla-ansible reconfigure
+kolla-ansible -i ./multinode reconfigure
 ```
 
 # Upgrades
@@ -16,7 +16,7 @@ openstack_release: 5.0.0
 ```
 After that simply run
 ```
-kolla-ansible upgrade
+kolla-ansible -i ./multinode upgrade
 ```
 
 Minor version upgrades are done in similar manner.
