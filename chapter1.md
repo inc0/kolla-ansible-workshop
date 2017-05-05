@@ -170,6 +170,11 @@ For Ubuntu:
 network_interface: "ens4"  # this is control plane, vxlan tunnels, storage and such
 neutron_external_interface: "ens5"  # this is interface Neutron will use for flat external networking
 ```
+For Centos:
+```
+network_interface: "eth1"  # this is control plane, vxlan tunnels, storage and such
+neutron_external_interface: "eth2"  # this is interface Neutron will use for flat external networking
+```
 
 #### Specify which services we want to deploy
 Default deployment of Kolla doesn't deploy storage services. To enable them simply add
