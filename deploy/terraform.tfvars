@@ -1,6 +1,9 @@
 # Base label for created resources
 prefix="student"
 
+# Number of controller nodes
+controller-count="2"
+
 # Number of compute nodes
 node-count="3"
 
