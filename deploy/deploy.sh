@@ -19,7 +19,7 @@ do
   echo 
   if [ "x$action" = "xcreate" ]; then
     echo "Creating $student..."
-    password=$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c32)
+    password=$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c8)
     terraform apply -state=$statedir/$student -var prefix=$student -var password=$password -var os=$os -var user=$os
   fi
   if [ "x$action" = "xdestroy" ]; then

@@ -1,8 +1,11 @@
 # Base label for created resources
 prefix="student"
 
+# Number of controller nodes
+controller-count="3"
+
 # Number of compute nodes
-node-count="3"
+node-count="2"
 
 # Private network for instances
 internal-ip-pool="demo-net"
