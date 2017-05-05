@@ -120,7 +120,7 @@ localhost       ansible_connection=local become=true # use localhost and sudo
 ## Check if ansible works
 
 ```
-ansible -i multinode -m raw -a "ls" all
+ansible -i ./multinode -m raw -a "ls" all
 ```
 
 ## Prepare config files
