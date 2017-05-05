@@ -41,7 +41,7 @@ docker exec -it -u root nova_compute bash
 Since all Kolla containers are run with net=host, whole networking stack will be the same as on host and all networking tools will be relevant.
 Only exception is openvswitch container, where, while low level bridges are run in kernel, toolset to control ovs is only available inside container, use 
 ```
-docker exec -it openvswitch-vswitchd ovs-vscl show
+docker exec -it openvswitch-vswitchd ovs-vsctl show
 ```
 
 ## Central logging
