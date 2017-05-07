@@ -10,8 +10,8 @@ ansible -i ./multinode -m shell -a "ifconfig ens5 up && dhclient ens5" all
 ```
 For Centos
 ```
-ansible -i ./multinode -m shell -a "ifconfig eth1 up && dhclient eth1" all
-ansible -i ./multinode -m shell -a "ifconfig eth2 up && dhclient eth2" all
+ansible -i ./multinode -m shell -a "ifconfig eth1 up" all
+ansible -i ./multinode -m shell -a "ifconfig eth2 up && dhclient" all
 ```
 
 ## Install docker and other requirements
