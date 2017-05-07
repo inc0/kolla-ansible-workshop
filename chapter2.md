@@ -8,7 +8,7 @@ ansible -m raw -i multinode  -a "apt-get -y install python" all
 ansible -i ./multinode -m shell -a "ifconfig ens4 up && dhclient ens4" all
 ansible -i ./multinode -m shell -a "ifconfig ens5 up && dhclient ens5" all
 ```
-For Centos
+For Centos (also disable selinux)
 ```
 ansible -i ./multinode -m shell -a "ifconfig eth1 up" all
 ansible -i ./multinode -m shell -a "ifconfig eth2 up && dhclient" all
