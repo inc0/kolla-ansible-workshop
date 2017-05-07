@@ -12,6 +12,7 @@ For Centos
 ```
 ansible -i ./multinode -m shell -a "ifconfig eth1 up" all
 ansible -i ./multinode -m shell -a "ifconfig eth2 up && dhclient" all
+ansible -i ./multinode -m shell -a "setenforce 0" all
 ```
 
 ## Install docker and other requirements
