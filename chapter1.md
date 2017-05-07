@@ -15,8 +15,8 @@ pip install -U pip
 ```
 Centos
 ```
-yum install epel-release
-yum install python-pip python-devel libffi-devel gcc openssl-devel sshpass
+yum install -y epel-release
+yum install -y python-pip python-devel libffi-devel gcc openssl-devel sshpass
 pip install -U pip
 ```
 Then use pip to install Ansible and Kolla-ansible
