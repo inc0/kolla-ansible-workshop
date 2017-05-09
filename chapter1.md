@@ -105,7 +105,7 @@ Let's edit this file so it will look roughly like this (with our environment cre
 control   # when you specify group_name:children, it will use contents of group specified
 
 [compute]
-10.0.0.[13:14] ansible_user=ubuntu ansible_password=foobar 
+10.0.0.[13:14] ansible_user=ubuntu ansible_password=foobar ansible_become=true
 
 [monitoring]
 10.0.0.10  # this group is for monitoring node. We will not deploy monitoring today as it's not production ready. We need to fill it nonetheless. Use one controller
