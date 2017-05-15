@@ -134,7 +134,7 @@ kolla-genpwd
 ```
 
 ### Prepare Kolla config
-Now let's prepare actual config. Use your favorite editor to edit /etc/kolla/globals.yaml
+Now let's prepare actual config. Use your favorite editor to edit /etc/kolla/globals.yml
 
 #### Select images to deploy
 In Kolla we use image-based deployment. Normally we could build our own images. Since it's time consuming task, for the purpose of training we will use pre-built images from docker registry.
