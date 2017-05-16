@@ -15,7 +15,7 @@ floating-ip-pool="public1"
 
 # Image properties for all instances
 image-name="ubuntu-16.04"
-image-flavor="m1.medium"
+image-flavor="m1.large"
 
 # sec groups for all instances
 security-groups="default"
